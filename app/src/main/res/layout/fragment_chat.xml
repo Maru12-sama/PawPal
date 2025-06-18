@@ -1,0 +1,81 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_container"
+    android:background="#E9FCFF"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="Chat"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:textColor="#2E2E52"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- ChatBot Card -->
+    <LinearLayout
+        android:id="@+id/cardChatBot"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="@drawable/chat_card_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:src="@drawable/ic_bot_avatar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="ChatBot"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#2E2E52"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="Start Chat with Our Bot!"
+                android:textSize="14sp"
+                android:textColor="#787878"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- FAQ Card -->
+    <LinearLayout
+        android:id="@+id/cardFAQ"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="@drawable/chat_card_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:src="@drawable/ic_faq"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp" />
+
+        <TextView
+            android:text="FAQ"
+            android:textSize="18sp"
+            android:textColor="#2E2E52"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</LinearLayout>

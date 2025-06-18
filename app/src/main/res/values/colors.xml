@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="light_blue">#E6F0FA</color>
+    <color name="pink">#FF6F61</color>
+    <color name="gray">#666666</color>
+    <color name="pastel_pink">#FFC9EA</color>
+    <color name="pastel_blue">#80C0E4</color>
+    <color name="blue_bkg">#E8FCFF</color>
+    <color name="blue_icon_select">#DFF3FF</color>
+    <color name="pink_chat">#DE0087</color>
+    <color name="red_delete">#F41270</color>
+</resources>
