@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
     app:startDestination="@id/splashFragment">
@@ -60,7 +60,29 @@
         <action
             android:id="@+id/action_homeFragment_to_chatFragment"
             app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_guidesFragment"
+            app:destination="@id/guidesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_guideDetailFragment"
+            app:destination="@id/guideDetailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/guidesFragment"
+        android:name="com.example.pawpal.mainMenu.guides.GuidesFragment"
+        android:label="GuidesFragment"
+        tools:layout="@layout/fragment_guides" >
+        <action
+            android:id="@+id/action_guidesFragment_to_guideDetailFragment"
+            app:destination="@id/guideDetailFragment"
+            app:popUpTo="@id/guidesFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/guideDetailFragment"
+        android:name="com.example.pawpal.mainMenu.guides.GuideDetailFragment"
+        android:label="GuideDetailFragment"
+        tools:layout="@layout/fragment_guide_detail" />
     <fragment
         android:id="@+id/chatFragment"
         android:name="com.example.pawpal.mainMenu.chat.ChatFragment"
@@ -73,4 +95,5 @@
         android:id="@+id/chatBotFragment"
         android:name="com.example.pawpal.mainMenu.chat.chatbot.ChatBotFragment"
         android:label="ChatBotFragment" />
+
 </navigation>
