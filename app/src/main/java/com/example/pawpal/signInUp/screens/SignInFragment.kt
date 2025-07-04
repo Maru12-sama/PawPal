@@ -38,20 +38,27 @@ class SignInFragment : Fragment() {
             if (ownerId != null) {
                 Toast.makeText(requireContext(), "Sign in successful!", Toast.LENGTH_SHORT).show()
 
-                // ✅ Simpan owner_id ke SharedPreferences
+                // Ambil nama owner dari database
+                val ownerName = dbHelper.getOwnerName(ownerId)
+
+                // Simpan data ke SharedPreferences
                 val sharedPref = requireActivity().getSharedPreferences("UserSession", Context.MODE_PRIVATE)
-                sharedPref.edit().putInt("owner_id", ownerId).apply()
+                with(sharedPref.edit()) {
+                    putInt("owner_id", ownerId)
+                    putString("owner_name", ownerName ?: "")
+                    putBoolean("is_logged_in", true)
+                    apply()
+                }
 
                 findNavController().navigate(R.id.action_signInUpFragment_to_homeFragment)
                 signInFinished()
             } else {
                 Toast.makeText(requireContext(), "Username/Email/Phone atau password salah", Toast.LENGTH_SHORT).show()
             }
-
         }
     }
 
-    private fun signInFinished (){
+    private fun signInFinished() {
         val sharedPref = requireActivity().getSharedPreferences("signIn", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
         editor.putBoolean("Finished", true)

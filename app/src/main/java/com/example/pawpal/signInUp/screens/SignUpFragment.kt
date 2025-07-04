@@ -44,6 +44,8 @@ class SignUpFragment : Fragment() {
             showDatePicker()
         }
 
+// Ganti bagian signUpButton click listener di SignUpFragment dengan ini:
+
         binding.signUpButton.setOnClickListener {
             val petName = binding.petNameEditText.text.toString()
             val petType = binding.petTypeDropdown.text.toString()
@@ -62,24 +64,30 @@ class SignUpFragment : Fragment() {
             val isTermsChecked = binding.termsCheckBox.isChecked
 
             if (username.isNotBlank() && password == rePassword && isTermsChecked) {
-                val sharedPref = requireActivity().getSharedPreferences("userPrefs", Context.MODE_PRIVATE)
-                with(sharedPref.edit()) {
-                    putString("username", username)
-                    putString("password", password)
-                    apply()
-                }
-
                 val dbHelper = AppDatabaseHelper(requireContext())
                 val result = dbHelper.insertOwnerWithPet(
                     ownerName, ownerPhone, ownerEmail, username, password,
                     petName, petType, breed, sex, dob
                 )
 
+                if (result > 0) {
+                    // Simpan data user ke SharedPreferences
+                    val sharedPref = requireActivity().getSharedPreferences("UserSession", Context.MODE_PRIVATE)
+                    with(sharedPref.edit()) {
+                        putInt("owner_id", result.toInt())
+                        putString("owner_name", ownerName)
+                        putString("username", username)
+                        putBoolean("is_logged_in", true)
+                        apply()
+                    }
 
-                val viewPager = activity?.findViewById<ViewPager2>(R.id.viewPagerSign)
-                viewPager?.currentItem = 0
+                    val viewPager = activity?.findViewById<ViewPager2>(R.id.viewPagerSign)
+                    viewPager?.currentItem = 0
 
-                Snackbar.make(binding.root, "Berhasil mendaftar, silakan login", Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(binding.root, "Berhasil mendaftar, silakan login", Snackbar.LENGTH_SHORT).show()
+                } else {
+                    Snackbar.make(binding.root, "Gagal mendaftar, coba lagi", Snackbar.LENGTH_SHORT).show()
+                }
             } else {
                 Snackbar.make(binding.root, "Pastikan semua data valid dan checkbox dicentang", Snackbar.LENGTH_SHORT).show()
             }

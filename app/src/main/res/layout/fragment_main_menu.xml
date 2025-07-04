@@ -51,16 +51,6 @@
             android:backgroundTint="@color/pastel_blue"
             android:src="@drawable/ic_notification"
             app:layout_constraintBottom_toBottomOf="@+id/logo"
-            app:layout_constraintEnd_toStartOf="@+id/cartIcon"
-            app:layout_constraintTop_toTopOf="@+id/logo" />
-
-        <ImageView
-            android:id="@+id/cartIcon"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_shop"
-            app:layout_constraintBottom_toBottomOf="@+id/logo"
             app:layout_constraintEnd_toStartOf="@+id/profileImage"
             app:layout_constraintTop_toTopOf="@+id/logo" />
 

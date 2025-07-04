@@ -33,6 +33,9 @@ class HomeFragment : Fragment() {
         val sharedPref = requireContext().getSharedPreferences("UserSession", Context.MODE_PRIVATE)
         userId = sharedPref.getInt("owner_id", -1)
 
+        // Setup welcome message dengan first name
+        setupWelcomeMessage()
+
         val noteCard = view.findViewById<CardView>(R.id.noteCard)
         val noteText = view.findViewById<TextView>(R.id.noteText)
 
@@ -44,6 +47,34 @@ class HomeFragment : Fragment() {
             noteText.text = "Add Reminders for $lastPetName Now!"
         } else {
             noteCard.visibility = View.GONE
+        }
+    }
+
+    private fun setupWelcomeMessage() {
+        val welcomeMsg = view?.findViewById<TextView>(R.id.welcomeMsg)
+
+        if (userId != -1) {
+            // Ambil owner name dari database
+            val ownerName = dbHelper.getOwnerName(userId)
+
+            if (!ownerName.isNullOrEmpty()) {
+                // Ambil first name (kata pertama dari full name)
+                val firstName = ownerName.split(" ")[0]
+                welcomeMsg?.text = "Welcome, $firstName!"
+            } else {
+                // Fallback jika tidak ada nama di database
+                val sharedPref = requireContext().getSharedPreferences("UserSession", Context.MODE_PRIVATE)
+                val savedOwnerName = sharedPref.getString("owner_name", "")
+
+                if (!savedOwnerName.isNullOrEmpty()) {
+                    val firstName = savedOwnerName.split(" ")[0]
+                    welcomeMsg?.text = "Welcome, $firstName!"
+                } else {
+                    welcomeMsg?.text = "Welcome, User!"
+                }
+            }
+        } else {
+            welcomeMsg?.text = "Welcome, User!"
         }
     }
 }

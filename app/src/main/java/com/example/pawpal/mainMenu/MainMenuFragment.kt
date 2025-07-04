@@ -10,6 +10,7 @@ import com.example.pawpal.databinding.FragmentMainMenuBinding
 import com.example.pawpal.mainMenu.chat.ChatFragment
 import com.example.pawpal.mainMenu.chat.chatbot.ChatBotFragment
 import com.example.pawpal.mainMenu.guides.GuidesFragment
+import com.example.pawpal.mainMenu.pets.PetsFragment
 
 class MainMenuFragment : Fragment() {
 
